@@ -1,0 +1,40 @@
+{% set version = "2.1.3" %}
+{% set sha256 = "f2c6874f1ea5b4ad4ffffe352413f7d2cd1a49f9050940805c2a082348621540" %}
+
+package:
+    name: pybind11
+    version: {{ version }}
+
+source:
+  path: ../.
+
+build:
+    number: 0
+    script:
+      - python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+    build:
+        - python
+        - cmake
+        - setuptools
+    run:
+        - python
+
+test:
+    imports:
+        - pybind11
+    commands:
+        - test -f ${PREFIX}/share/cmake/pybind11/pybind11Config.cmake                         # [unix]
+        - if exist %PREFIX%\share\cmake\pybind11\pybind11Config.cmake (exit 0) else (exit 1)  # [win]
+
+
+about:
+    home: https://github.com/pybind/pybind11/
+    license: BSD 3-Clause
+    summary: Seamless operability between C++11 and Python
+
+extra:
+  recipe-maintainers:
+    - SylvainCorlay
+    - wjakob
