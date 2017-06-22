@@ -36,7 +36,7 @@ else:
 
 setup(
     name='pybind11',
-    version=__version__,
+    version=2.3,
     description='Seamless operability between C++11 and Python',
     author='Wenzel Jakob',
     author_email='wenzel.jakob@epfl.ch',

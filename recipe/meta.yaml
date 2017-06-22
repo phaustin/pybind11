@@ -1,0 +1,29 @@
+package:
+    name: pybind11
+    version: 2.3
+
+source:
+  path: ../.
+
+build:
+    number: 0
+    script:
+      - python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+    build:
+        - python
+        - cmake
+        - setuptools
+    run:
+        - python
+
+about:
+    home: https://github.com/pybind/pybind11/
+    license: BSD 3-Clause
+    summary: Seamless operability between C++11 and Python
+
+extra:
+  recipe-maintainers:
+    - SylvainCorlay
+    - wjakob
